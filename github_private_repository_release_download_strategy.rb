@@ -2,6 +2,9 @@
 # Requires a GitHub access token via `HOMEBREW_GITHUB_API_TOKEN` environment
 # variable to authorize the request.
 class GitHubPrivateRepositoryReleaseDownloadStrategy < CurlDownloadStrategy
+  require "utils/formatter"
+  require "utils/github"
+
   def initialize(url, name, version, **meta)
     super
     parse_url_pattern
