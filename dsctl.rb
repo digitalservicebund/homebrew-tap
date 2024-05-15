@@ -6,14 +6,14 @@ require_relative "github_private_repository_release_download_strategy"
 class Dsctl < Formula
   desc ""
   homepage ""
-  version "0.5.0"
+  version "0.5.1"
 
   depends_on "kubectl"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.0/dsctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "7d3257f219de575f0b978c2ead06794e56c4062d0d11b99752e46b96b9641fb0"
+    on_intel do
+      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.1/dsctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "66253966c3e60b556703d89dc67912d771f79dd98e8999f3dc2bc15bc317119f"
 
       def install
         bin.install "dsctl"
@@ -22,9 +22,9 @@ class Dsctl < Formula
         zsh_completion.install "completions/dsctl.zsh" => "_dsctl"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.0/dsctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "3711080486e3e068cd034b103a122c84653d82a6be5372e8888662305d12b69c"
+    on_arm do
+      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.1/dsctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "df60c4d9e27bd34bfd6e9024c2f02353b7a64add02511d618abb6416c178dddd"
 
       def install
         bin.install "dsctl"
@@ -36,26 +36,30 @@ class Dsctl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.0/dsctl_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "f7692c16a45ea4c08808273d12709b679d0ea7647a35694d1070a7fd6110c184"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.1/dsctl_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "5b91f10f4284398d01fb25fe9edcb53ad6ff3e544ac6c115cb564db1d757606f"
 
-      def install
-        bin.install "dsctl"
-        bash_completion.install "completions/dsctl.bash" => "dsctl"
-        fish_completion.install "completions/dsctl.fish"
-        zsh_completion.install "completions/dsctl.zsh" => "_dsctl"
+        def install
+          bin.install "dsctl"
+          bash_completion.install "completions/dsctl.bash" => "dsctl"
+          fish_completion.install "completions/dsctl.fish"
+          zsh_completion.install "completions/dsctl.zsh" => "_dsctl"
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.0/dsctl_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "231d28549f23ef91e65641e5cf3cd8fb7aa73f5e779ca695c7ec11637bc532f6"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.1/dsctl_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "3f9f9d2b0a783b86191da8222771178306ad5776f63be6b1fff0d025309fd668"
 
-      def install
-        bin.install "dsctl"
-        bash_completion.install "completions/dsctl.bash" => "dsctl"
-        fish_completion.install "completions/dsctl.fish"
-        zsh_completion.install "completions/dsctl.zsh" => "_dsctl"
+        def install
+          bin.install "dsctl"
+          bash_completion.install "completions/dsctl.bash" => "dsctl"
+          fish_completion.install "completions/dsctl.fish"
+          zsh_completion.install "completions/dsctl.zsh" => "_dsctl"
+        end
       end
     end
   end
