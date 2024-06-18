@@ -6,14 +6,14 @@ require_relative "github_private_repository_release_download_strategy"
 class Dsctl < Formula
   desc ""
   homepage ""
-  version "0.5.3"
+  version "0.6.0"
 
   depends_on "kubectl"
 
   on_macos do
     on_intel do
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.3/dsctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ff574a68f1c7b0d29b4e6b07f41221aae7f68cfd1e1dbe098e3b4ea08c6f496f"
+      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.6.0/dsctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "2505f166906f07ab8feb4dc132d9d4c0ff860f055d4f8e22c4dacc35369c5ff8"
 
       def install
         bin.install "dsctl"
@@ -23,8 +23,8 @@ class Dsctl < Formula
       end
     end
     on_arm do
-      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.3/dsctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "8e7f5424c83ac5efb706bc25001886e20e607ad1f9893857df88bde83af3d2e7"
+      url "https://github.com/digitalservicebund/dsctl/releases/download/v0.6.0/dsctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+      sha256 "614e27d86cef94022b15d1d94879cb109fbc55d65de055b1f1434e84d537ebe3"
 
       def install
         bin.install "dsctl"
@@ -38,8 +38,8 @@ class Dsctl < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.3/dsctl_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "1a74a7bd9acd68fa5cf6d650bf4ca1fb5b8beca7f370fd16f204bc7b71100006"
+        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.6.0/dsctl_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "386501457627495b73b125cf5135223c938a07dc74921ca288065a84d4126fe4"
 
         def install
           bin.install "dsctl"
@@ -51,8 +51,8 @@ class Dsctl < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.5.3/dsctl_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "234ccdc20314422fc6fd4c97c2ebeef3a94e5826fbf0dae9a8ff4d8ec5c7fed3"
+        url "https://github.com/digitalservicebund/dsctl/releases/download/v0.6.0/dsctl_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+        sha256 "f9822185c7fcd169a9e7fadc14dce69186e8c6596f4d32f584f7bc2c3830365f"
 
         def install
           bin.install "dsctl"
